@@ -11,6 +11,10 @@ if($page_name == 'Register'){
         include 'inc/header.php';
         include 'inc/forgot-password-body.php';
         include 'inc/footer.php'; 
+    }elseif($page_name == 'Logout'){
+        include 'inc/header.php';
+        include 'inc/logout-body.php';
+        include 'inc/footer.php'; 
     
     }elseif($page_name == 'Authenticate'){
         include 'inc/header.php';
@@ -31,6 +35,7 @@ if($page_name == 'Register'){
             include 'inc/nav-bar.php';
             include 'inc/orders-body.php';
             include 'inc/footer-1.php'; 
+        
         
         
     
