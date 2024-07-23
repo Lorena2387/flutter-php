@@ -1,10 +1,15 @@
 <?php
 include ('database.php');
 
+if(isset($_POST['submit'])){
   $sql = "INSERT INTO users (user_name, user_email, user_mobile, user_password)
   VALUES ('Lorena', 'lorenaramirez23@hotmail.com', '99999999999', '123456')";
   // use exec() because no results are returned
   $conn->exec($sql);
+
+}
+
+  
   
 ?>
 <body>
@@ -54,7 +59,9 @@ include ('database.php');
             </form>
           </div>
           <div class="col-md12" style="text-align: center; font-size: 14px; font-weight: 200; padding: 10px 20px 10px 20px">
-            <a href="authenticate.html" class="btn btn-warning">Register now</a>
+            <!--<a href="authenticate.html" class="btn btn-warning">Register now</a> -->
+
+            <button name ="submit" class = "btn btn-warning">Register now</button>
 
           </div>
 
