@@ -2,6 +2,12 @@
 include ('database.php');
 
 if(isset($_POST['submit'])){
+
+  $username = $_POST['yourname'];
+  $useremail = $_POST['youremail'];
+  $usermobile = $_POST['yourmobile'];
+  $userpassword = $_POST['password'];
+  $confirmpassword = $_POST['confirmpassword'];
   $sql = "INSERT INTO users (user_name, user_email, user_mobile, user_password)
   VALUES ('Lorena', 'lorenaramirez23@hotmail.com', '99999999999', '123456')";
   // use exec() because no results are returned
