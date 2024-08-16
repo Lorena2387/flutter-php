@@ -8,10 +8,16 @@ if(isset($_POST['submit'])){
   $usermobile = $_POST['yourmobile'];
   $userpassword = $_POST['password'];
   $confirmpassword = $_POST['confirmpassword'];
-  $sql = "INSERT INTO users (user_name, user_email, user_mobile, user_password)
-  VALUES ('$username', '$useremail', '$usermobile', '$userpassword')";
-  // use exec() because no results are returned
-  $conn->exec($sql);
+
+  if($userpassword == $confirmpassword){
+    $sql = "INSERT INTO users (user_name, user_email, user_mobile, user_password)
+    VALUES ('$username', '$useremail', '$usermobile', '$userpassword')";
+    // use exec() because no results are returned
+    $conn->exec($sql);
+  }else{
+    $message = 'Password & confirm password not matched'
+  }
+  
 
 }
 
@@ -30,7 +36,17 @@ if(isset($_POST['submit'])){
             
           </div>
           <div class="col-md12">
-            <span style="font-weight: 100; font-size: 20px;">Register A New Account For Free</span> 
+            <span style="font-weight: 100; font-size: 20px;">Register A New Account For Free</span>
+             <?php
+             if($message != ''){
+              echo "<br>";
+              echo "<span style = 'color: red'>$message</span>"
+             }
+             ?>
+
+
+
+
           </div>
           <div class="col-md12">
             <form>
