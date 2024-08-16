@@ -1,30 +1,15 @@
 <?php
 include ('database.php');
 
-if(isset($_POST['submit'])){
+$id = $_GET['id'];
 
-  $username = $_POST['yourname'];
-  $useremail = $_POST['youremail'];
-  $usermobile = $_POST['yourmobile'];
-  $userpassword = $_POST['password'];
-  $confirmpassword = $_POST['confirmpassword'];
-
-  $encrypted_password = md5($userpassword);
-
-  if($userpassword == $confirmpassword){
-    $sql = "INSERT INTO users (user_name, user_email, user_mobile, user_password)
-    VALUES ('$username', '$useremail', '$usermobile', '$encrypted_password')";
-    // use exec() because no results are returned
-    $conn->exec($sql);
-    $last_id = $conn->lastInsertId();
-
-    header ("Location: index.php?page=Thankyou&id=$last_id");
-  }else{
-    $message = 'Password & confirm password not matched'
-  }
-  
-
-}
+$select_user = "SELECT * FROM users WHERE id = $id";
+$sql = $conn->prepare($select_user);
+$sql->execute();
+$data = $sql->fetchAll(PDO :: FETCH_OBJ);
+foreach ($data as $row)
+$database_username = $row-> user_name;
+echo "$database_username";
 
   
   
@@ -42,34 +27,13 @@ if(isset($_POST['submit'])){
           </div>
           <div class="col-md12">
             <span style="font-weight: 100; font-size: 20px;">Register A New Account For Free</span>
-             <?php
-             if($message != ''){
-              echo "<br>";
-              echo "<span style = 'color: red'>$message</span>"
-             }
-             ?>
-
+             
 
 
 
           </div>
           <div class="col-md12">
-            <form>
-              <div class="row">
-                <div class="col-md12" style="text-align: left; font-size: 14px; font-weight: 200; padding: 20px 20px 10px 20px">
-                  <label>Your Name</label>
-                  <input type="text" name="yourname" placeholder="Username" class="form-control">
-                </div>
-                <div class="col-md12" style="text-align: left; font-size: 14px; font-weight: 200; padding: 20px 20px 10px 20px">
-                    <label>Your Email (Email will Be The Username)</label>
-                    <input type="email" name="youremail" placeholder="Email Id" class="form-control">
-                  </div>
-                  <div class="col-md12" style="text-align: left; font-size: 14px; font-weight: 200; padding: 20px 20px 10px 20px">
-                    <label>Your Mobile</label>
-                    <input type="number" name="yourmobile" placeholder="10 Digit Mobile Number" class="form-control">
-                  </div>
-              </div>
-            </form>
+            Dear <?php echo$row->user_name?>, you registration is successful. You can now <a href="index.php?page=Login">login</a>
           </div>
           <div class="col-md12">
             <form>
