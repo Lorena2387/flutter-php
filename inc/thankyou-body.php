@@ -16,6 +16,9 @@ if(isset($_POST['submit'])){
     VALUES ('$username', '$useremail', '$usermobile', '$encrypted_password')";
     // use exec() because no results are returned
     $conn->exec($sql);
+    $last_id = $conn->lastInsertId();
+
+    header ("Location: index.php?page=Thankyou&id=$last_id");
   }else{
     $message = 'Password & confirm password not matched'
   }

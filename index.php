@@ -7,6 +7,11 @@ if($page_name == 'Register'){
     include 'inc/header.php';
     include 'inc/register-body.php';
     include 'inc/footer.php'; 
+    if($page_name == 'Thankyou'){
+        include 'inc/header.php';
+        include 'inc/thankyou-body.php';
+        include 'inc/footer.php'; 
+    }
 }elseif($page_name == 'Forgot-Password'){
         include 'inc/header.php';
         include 'inc/forgot-password-body.php';
