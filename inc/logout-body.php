@@ -1,3 +1,7 @@
+<?php
+session_start();
+session_destroy();
+?>
 <style type="txt/css">
     body{
       background-color: #08AEEA;
